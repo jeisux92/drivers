@@ -1,15 +1,18 @@
-import React, { Component } from "react";
-import Home from "./Login/Home";
-import "./App.css";
-
+import React, { Component } from 'react'
+import Home from './Login/Home'
+import Loading from './Shared/Loading'
+import './App.css'
 class App extends Component {
-  render() {
+  render () {
     return (
-      <div className="App container">
-        <Home />
+      <div>
+        <div className='App container'>
+          <Home />
+          <Loading />>
+        </div>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
