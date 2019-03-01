@@ -1,12 +1,15 @@
 import React from "react";
 import logo from "../liftit.svg";
+import { Field, reduxForm } from 'redux-form'
+import store from '../store';
 
 const imgStyle = {
   backgroundColor: "#9393a0",
   height: "60px"
 };
 
-const login = function(props) {
+const loginForm = function (props) {
+  const { handleSubmit } = props
   return (
     <div className="card">
       <img
@@ -15,14 +18,16 @@ const login = function(props) {
         alt="Card image cap"
         style={imgStyle}
       />
-      <form className="card-body">
+      <form className="card-body" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="user" className="label">
             Usario
           </label>
-          <input
-            id="user"
+          <Field
+            name="user"
             type="text"
+            required="required"
+            component="input"
             className="form-control form-control-sm"
           />
         </div>
@@ -30,13 +35,15 @@ const login = function(props) {
           <label htmlFor="password" className="label">
             Password
           </label>
-          <input
-            id="user"
+          <Field
+            name="password"
             type="password"
+            required="required"
+            component="input"
             className="form-control form-control-sm"
           />
         </div>
-        <button type="button" className="btn btn-sm btn-primary">
+        <button type="submit" className="btn btn-sm btn-primary">
           Login
         </button>
       </form>
@@ -44,4 +51,9 @@ const login = function(props) {
   );
 };
 
-export default login;
+export default reduxForm({
+  // a unique name for the form
+  form: 'login'
+})(loginForm)
+
+
